@@ -11,7 +11,6 @@ public class Duplicate_element {
             		 if(i!=j) {
             			 if(arr[i]==arr[j]) {  
             					 arr[j]=-1;
-            					 //System.out.print(arr[i]+" ");
             					 count++;
             					 if(count<=1) {
                     				 System.out.print(arr[i]+" ");

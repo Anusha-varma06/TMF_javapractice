@@ -8,7 +8,7 @@ public class Pair_element_sum {
         int no=sc.nextInt();
         int arr[]= {2,5,6,7,3};
         for(int i=0;i<arr.length;i++){
-        	if(i!=0) {
+        	if(arr[i]!=0) {
         		for(int j=0;j<arr.length;j++) {
             		if(i!=j) {
             			if(arr[i]+arr[j]==no) {
