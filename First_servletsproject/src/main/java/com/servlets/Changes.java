@@ -9,23 +9,22 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-@WebServlet("/Deletedata")
+@WebServlet("/Changes")
 /**
- * Servlet implementation class Deletedata
+ * Servlet implementation class Changes
  */
-public class Deletedata extends HttpServlet {
+public class Changes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Deletedata() {
+    public Changes() {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -34,9 +33,17 @@ public class Deletedata extends HttpServlet {
 		try {
 			Connection cons=Dbconnection.connect();
 			String name=(String)request.getParameter("uname");
-			String query="delete from demo where name=?";
+			String password=(String)request.getParameter("password");
+			String email=(String)request.getParameter("email");
+			String mobile=(String)request.getParameter("mobile");
+			String gender=(String)request.getParameter("gender");
+			String query="update demo set password=?,email=?,mobile=?,gender=? where name=?";
 			PreparedStatement ps=cons.prepareStatement(query);
-			ps.setString(1,name);
+			ps.setString(1,password);
+			ps.setString(2,email);
+			ps.setString(3,mobile);
+			ps.setString(4,gender);
+			ps.setString(5,name);
 			int res=ps.executeUpdate();
 			if(res>0) {
 				RequestDispatcher rd=request.getRequestDispatcher("Udisplaydata");
@@ -51,5 +58,4 @@ public class Deletedata extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
 }

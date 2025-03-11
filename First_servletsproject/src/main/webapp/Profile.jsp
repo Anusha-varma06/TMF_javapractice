@@ -20,5 +20,6 @@
    email:<%=email %>
    mobile:<%=mobile %>
    gender:<%=gender %>
+   <a href="Logout">logout</a>
 </body>
 </html>
